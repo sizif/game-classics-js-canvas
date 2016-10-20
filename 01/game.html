@@ -11,6 +11,7 @@
         <script>
         
             var ballX = 75;
+            var ballSpeedX = 5; // (1)
             
             var canvas, canvasContext;
             
@@ -23,8 +24,13 @@
             }
                 
             function updateAll() {
-                ballX += 5; // (1)
+                ballX += ballSpeedX; // (2)
                 console.log(ballX);
+                
+                if(ballX > canvas.width) {
+                    ballSpeedX = -ballSpeedX; // (3) switch direction
+                    // (4) could've been written as 'ballSpeedX *= -1';
+                }
                 
                 canvasContext.fillStyle = 'black';
                 canvasContext.fillRect(0,0, canvas.width, canvas.height);
@@ -35,7 +41,11 @@
                 canvasContext.fill();
             }
             
-            // (1) Make the ball speed 5x greater 
+            // (1) Initialize a new var, ballSpeedX, to set up the added bouncing back functionality
+            // (2) In UpdateAll() def, Replace the hardcoded int '5' for ballX increment, with ballSpeedX
+            // (3) Set up an if condition to change the direction of the ball if it hits canvas edge on the X axis
+            // (4) This is the alternative way to switch movement direction in the if stmt
+            
         </script>
     </body>
 </html>
