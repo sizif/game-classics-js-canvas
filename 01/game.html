@@ -27,31 +27,33 @@
                 
             function updateAll() {
                 ballX += ballSpeedX;
-                ballX += ballSpeedX;            // (1) 
-                                                // (1)
-                if(ballX < 0) {                 // (1)
-                    ballSpeedX *= -1;           // (1)
-                }                               // (1)
-                if(ballX > canvas.width) {      // (1)
-                    ballSpeedX *= -1;           // (1)    
-                }                               // (1)
+                ballY += ballSpeedY;            // (1) 
+
                 if(ballX < 0) {
                     ballSpeedX *= -1;
                 }
                 if(ballX > canvas.width) {
-                    ballSpeedX *= -1;
+                    ballSpeedX *= -1;    
                 }
+                if(ballY < 0) {                 // (1)
+                    ballSpeedY *= -1;           // (1)
+                }                               // (1)
+                if(ballY > canvas.width) {      // (1) (2)
+                    ballSpeedY *= -1;           // (1)
+                }                               // (1)
                 
                 canvasContext.fillStyle = 'black';
                 canvasContext.fillRect(0,0, canvas.width, canvas.height);
                 
                 canvasContext.fillStyle = 'white';
                 canvasContext.beginPath();
-                canvasContext.arc(ballX,100, 10, 0,Math.PI*2, true); 
+                canvasContext.arc(ballX,ballY, 10, 0,Math.PI*2, true); // (3)
                 canvasContext.fill();
             }
             
-            // (1) I copypasted the ballX update and the 2 if statements into itself, on the 2nd line (reducing the need to shuffle the code all around.); (2) Next commit, I'll make sure that each ballX line gets a matching ballY version
+            // (1) Make sure that each ballX line gets a matching ballY version
+            // (2) My .width has to become .height
+            // (3) Finally, plug in the ballY variable as the position for the ball
             
         </script>
     </body>
