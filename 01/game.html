@@ -11,9 +11,9 @@
         <script>
         
             var ballX = 75;
-            var ballY = 75; // (1)
+            var ballY = 75;
             var ballSpeedX = 5;
-            var ballSpeedY = 5; // (2)
+            var ballSpeedY = 5;
             
             var canvas, canvasContext;
             
@@ -27,7 +27,14 @@
                 
             function updateAll() {
                 ballX += ballSpeedX;
-                // (3)
+                ballX += ballSpeedX;            // (1) 
+                                                // (1)
+                if(ballX < 0) {                 // (1)
+                    ballSpeedX *= -1;           // (1)
+                }                               // (1)
+                if(ballX > canvas.width) {      // (1)
+                    ballSpeedX *= -1;           // (1)    
+                }                               // (1)
                 if(ballX < 0) {
                     ballSpeedX *= -1;
                 }
@@ -44,7 +51,7 @@
                 canvasContext.fill();
             }
             
-            // (1), (2) Add the Y axis vars; (3) remove the console log of the ball position value
+            // (1) I copypasted the ballX update and the 2 if statements into itself, on the 2nd line (reducing the need to shuffle the code all around.); (2) Next commit, I'll make sure that each ballX line gets a matching ballY version
             
         </script>
     </body>
