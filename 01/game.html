@@ -8,8 +8,19 @@
     <body>
         <canvas id="gameCanvas" width="800" height="600"></canvas>
         
-        <script type="text/javascript" src="">
-            console.log("Just some text");
+        <script>
+            var canvas, canvasContext;
+            
+            window.onload = function() { // (1)
+                canvas = document.getElementById('gameCanvas');
+                canvasContext = canvas.getContext('2d');
+                
+                canvasContext.fillStyle = 'black';
+                canvasContext.fillRect(0,0, canvas.width, canvas.height);
+                
+                // (1) color the canvas background black
+                // (2) canvas.width is 800, canvas.height is 600
+            }
         </script>
     </body>
 </html>
