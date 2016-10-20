@@ -11,15 +11,22 @@
         <script>
             var canvas, canvasContext;
             
-            window.onload = function() { // (1)
+            window.onload = function() {
                 canvas = document.getElementById('gameCanvas');
                 canvasContext = canvas.getContext('2d');
                 
                 canvasContext.fillStyle = 'black';
                 canvasContext.fillRect(0,0, canvas.width, canvas.height);
                 
-                // (1) color the canvas background black
-                // (2) canvas.width is 800, canvas.height is 600
+                // (1) Draw a circle on canvas
+                canvasContext.fillStyle = 'white';
+                canvasContext.beginPath();
+                canvasContext.arc(100,100, 10, 0,Math.PI*2, true); 
+                /* (2) arc params = (100,100...) is the X and Y of the center of the circle
+                   (3) arc param[2] is the radius of the circle
+                   (4) arc param[3,4] means we'll draw it from 0 all the way to PI*2 
+                   (5) arc param[5], 'true' means 'clockwise'
+                */
             }
         </script>
     </body>
