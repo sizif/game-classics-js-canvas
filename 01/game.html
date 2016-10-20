@@ -15,10 +15,11 @@
                 canvas = document.getElementById('gameCanvas');
                 canvasContext = canvas.getContext('2d');
                 
-                var framesPerSecond = 30; // (1) set up the fps
-                setInterval(updateAll, 1000/framesPerSecond); // (2) set up the canvas update frequency in relation to fps
+                var framesPerSecond = 30;
+                setInterval(updateAll, 1000/framesPerSecond);
+            }
                 
-                
+            function updateAll() { // (1)
                 canvasContext.fillStyle = 'black';
                 canvasContext.fillRect(0,0, canvas.width, canvas.height);
                 
@@ -27,6 +28,9 @@
                 canvasContext.arc(100,100, 10, 0,Math.PI*2, true); 
                 canvasContext.fill();
             }
+            
+            // (1) Move the draw code into the updateAll function
+            // (2) And now, this function will be called 30 times per second 
         </script>
     </body>
 </html>
