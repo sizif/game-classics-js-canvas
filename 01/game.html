@@ -27,7 +27,7 @@
                 var root = document.documentElement;
                 
                 var mouseX = evt.clientX - rect.left - root.scroolLeft;             
-                paddleX = mouseX;
+                paddleX = mouseX - PADDLE_WIDTH/2; // (1)
             }
             
             window.onload = function() {
@@ -84,7 +84,7 @@
                 canvasContext.fill();                
             }
             
-            // (1) draw the paddle
+            // (1) draw the paddle in the center of the mouse pointer
              
         </script>
     </body>
