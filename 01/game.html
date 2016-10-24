@@ -26,8 +26,14 @@
             }
                 
             function updateAll() {
+                moveAll(); // (1)
+                drawAll(); // (1)
+            
+            }
+            
+            function moveAll() { // (2) 
                 ballX += ballSpeedX;
-                ballY += ballSpeedY;            // (1) 
+                ballY += ballSpeedY; 
 
                 if(ballX < 0) {
                     ballSpeedX *= -1;
@@ -35,25 +41,28 @@
                 if(ballX > canvas.width) {
                     ballSpeedX *= -1;    
                 }
-                if(ballY < 0) {                 // (1)
-                    ballSpeedY *= -1;           // (1)
-                }                               // (1)
-                if(ballY > canvas.width) {      // (1) (2)
-                    ballSpeedY *= -1;           // (1)
-                }                               // (1)
-                
+                if(ballY < 0) {
+                    ballSpeedY *= -1;
+                }
+                if(ballY > canvas.width) {
+                    ballSpeedY *= -1;
+                }
+            }
+            
+            function drawAll() { // (3) 
                 canvasContext.fillStyle = 'black';
                 canvasContext.fillRect(0,0, canvas.width, canvas.height);
                 
                 canvasContext.fillStyle = 'white';
                 canvasContext.beginPath();
-                canvasContext.arc(ballX,ballY, 10, 0,Math.PI*2, true); // (3)
+                canvasContext.arc(ballX,ballY, 10, 0,Math.PI*2, true);
                 canvasContext.fill();
             }
             
-            // (1) Make sure that each ballX line gets a matching ballY version
-            // (2) My .width has to become .height
-            // (3) Finally, plug in the ballY variable as the position for the ball
+            // (1) Call moveAll() and drawAll()
+            // (2) Define moveAll()
+            // (3) Define drawAll()
+            
             
         </script>
     </body>
