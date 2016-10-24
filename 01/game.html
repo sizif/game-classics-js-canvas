@@ -15,7 +15,21 @@
             var ballSpeedX = 5;
             var ballSpeedY = 7;
             
+            const PADDLE_WIDTH = 100; // (1)
+            const PADDLE_THICKNESS = 10; // (2)
+            var paddleX = 400; // (3)
+            
             var canvas, canvasContext;
+            
+            function updateMousePos(evt) { // (5)
+                
+                var rect = canvas.getBoundingClientRect(); // (6)
+                var root = document.documentElement;
+                
+                var mouseX = evt.clientX - rect.left - root.scroolLeft; // (7)
+                // var mouseY = evt.clientY - rect.top - root.scroolTop; // (8)                
+                paddleX = mouseX; // (9)
+            }
             
             window.onload = function() {
                 canvas = document.getElementById('gameCanvas');
@@ -23,6 +37,8 @@
                 
                 var framesPerSecond = 30;
                 setInterval(updateAll, 1000/framesPerSecond);
+                
+                canvas.addEventListener('mousemove', updateMousePos); // (4)
             }
                 
             function updateAll() {
@@ -67,6 +83,15 @@
                 canvasContext.fill();                
             }
             
+            // (1) Set paddle width
+            // (2) Set paddle height
+            // (3) Set paddle X position
+            // (4) To move the mouse, add an event listener
+            // (5) Define the updateMousePos() that I called in (4)
+            // (6) Get the position on the page of our actual canvas
+            // (7) subtract how far the canvas is from the left side and how far the user has scrolled sideways 
+            // (8) Same for the Y, but we won't use it now
+            // (9) Update the global paddleX value to where we wanna go
         </script>
     </body>
 </html>
