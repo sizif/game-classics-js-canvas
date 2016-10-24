@@ -15,20 +15,19 @@
             var ballSpeedX = 5;
             var ballSpeedY = 7;
             
-            const PADDLE_WIDTH = 100; // (1)
-            const PADDLE_THICKNESS = 10; // (2)
-            var paddleX = 400; // (3)
+            const PADDLE_WIDTH = 100;
+            const PADDLE_THICKNESS = 10;
+            var paddleX = 400;
             
             var canvas, canvasContext;
             
-            function updateMousePos(evt) { // (5)
+            function updateMousePos(evt) {
                 
-                var rect = canvas.getBoundingClientRect(); // (6)
+                var rect = canvas.getBoundingClientRect();
                 var root = document.documentElement;
                 
-                var mouseX = evt.clientX - rect.left - root.scroolLeft; // (7)
-                // var mouseY = evt.clientY - rect.top - root.scroolTop; // (8)                
-                paddleX = mouseX; // (9)
+                var mouseX = evt.clientX - rect.left - root.scroolLeft;             
+                paddleX = mouseX;
             }
             
             window.onload = function() {
@@ -38,7 +37,7 @@
                 var framesPerSecond = 30;
                 setInterval(updateAll, 1000/framesPerSecond);
                 
-                canvas.addEventListener('mousemove', updateMousePos); // (4)
+                canvas.addEventListener('mousemove', updateMousePos);
             }
                 
             function updateAll() {
@@ -69,6 +68,8 @@
                 colorRect(0,0, canvas.width, canvas.height, 'black');
                 
                 colorCircle(ballX,ballY, 10, 'white');
+                
+                colorRect(paddleX, canvas.height-PADDLE_THICKNESS, PADDLE_WIDTH,PADDLE_THICKNESS, 'white'); // (1)
             }
             
             function colorRect(topLeftX,topLeftY, boxWidth,boxHeight, fillColor) {
@@ -83,15 +84,8 @@
                 canvasContext.fill();                
             }
             
-            // (1) Set paddle width
-            // (2) Set paddle height
-            // (3) Set paddle X position
-            // (4) To move the mouse, add an event listener
-            // (5) Define the updateMousePos() that I called in (4)
-            // (6) Get the position on the page of our actual canvas
-            // (7) subtract how far the canvas is from the left side and how far the user has scrolled sideways 
-            // (8) Same for the Y, but we won't use it now
-            // (9) Update the global paddleX value to where we wanna go
+            // (1) draw the paddle
+             
         </script>
     </body>
 </html>
