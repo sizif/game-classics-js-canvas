@@ -13,7 +13,7 @@
             var ballX = 75;
             var ballY = 75;
             var ballSpeedX = 5;
-            var ballSpeedY = 5;
+            var ballSpeedY = 7;
             
             var canvas, canvasContext;
             
@@ -26,12 +26,12 @@
             }
                 
             function updateAll() {
-                moveAll(); // (1)
-                drawAll(); // (1)
+                moveAll();
+                drawAll();
             
             }
             
-            function moveAll() { // (2) 
+            function moveAll() {
                 ballX += ballSpeedX;
                 ballY += ballSpeedY; 
 
@@ -50,17 +50,16 @@
             }
             
             function drawAll() {
-                colorRect(0,0, canvas.width, canvas.height, 'black'); // (2) call colorRect (clear screen)
+                colorRect(0,0, canvas.width, canvas.height, 'black');
                 
-                colorCircle(ballX,ballY, 10, 'white'); // (4) call colorCircle (draw ball)
+                colorCircle(ballX,ballY, 10, 'white');
             }
             
-            // (1) define colorRect()
             function colorRect(topLeftX,topLeftY, boxWidth,boxHeight, fillColor) {
                 canvasContext.fillStyle = fillColor;
                 canvasContext.fillRect(topLeftX,topLeftY, boxWidth,boxHeight);
             }
-            // (3) define colorCircle()
+            
             function colorCircle(centerX,centerY, radius, fillColor) {
                 canvasContext.fillStyle = fillColor;
                 canvasContext.beginPath();
