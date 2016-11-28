@@ -17,7 +17,7 @@
             
             const PADDLE_WIDTH = 100;
             const PADDLE_THICKNESS = 10;
-            const PADDLE_DIST_FROM_EDGE = 60; // (1) introduce the new const
+            const PADDLE_DIST_FROM_EDGE = 60;
 ;           var paddleX = 400;
             
             var canvas, canvasContext;
@@ -68,16 +68,20 @@
                 if(ballY > canvas.width) {
                     ballReset();
                 }
-                // (3) detect if the ball is within the paddle bounds:
+                
                 var paddleTopEdgeY = canvas.height-PADDLE_DIST_FROM_EDGE;
                 var paddleBottomEdgeY = paddleTopEdgeY + PADDLE_THICKNESS;
                 var paddleLeftEdgeX = paddleX;
                 var paddleRightEdgeX = paddleX + PADDLE_WIDTH;
-                if( ballY > paddleTopEdgeY &&       // below the top of paddle
-                    ballY < paddleBottomEdgeY &&    // above bottom of paddle
-                    ballX > paddleLeftEdgeX &&      // right of the left side of paddle
-                    ballX < paddleRightEdgeX) {     // left of the right side of paddle
+                if( ballY > paddleTopEdgeY &&
+                    ballY < paddleBottomEdgeY &&
+                    ballX > paddleLeftEdgeX &&
+                    ballX < paddleRightEdgeX) {
                         ballSpeedY *= -1;
+                        
+                        var centerOfPaddleX = paddleX + PADDLE_WIDTH/2;  // (1)
+                        var ballDistFromPaddleCenterX = ballX -centerOfPaddleX;
+                        ballSpeedX = ballDistFromPaddleCenterX
                     }
             }
             
@@ -86,7 +90,7 @@
                 
                 colorCircle(ballX,ballY, 10, 'white');
                 
-                colorRect(paddleX, canvas.height-PADDLE_DIST_FROM_EDGE, PADDLE_WIDTH,PADDLE_THICKNESS, 'white'); // (2) move the paddle up
+                colorRect(paddleX, canvas.height-PADDLE_DIST_FROM_EDGE, PADDLE_WIDTH,PADDLE_THICKNESS, 'white');
             }
             
             function colorRect(topLeftX,topLeftY, boxWidth,boxHeight, fillColor) {
@@ -101,9 +105,6 @@
                 canvasContext.fill();                
             }
             
-            // (1) introduce PADDLE_DIST_FROM_EDGE; move paddle from edge, reflect ball
-            // (2) move the paddle up from the edge
-            // (3) detect if the ball is within the paddle bounds, if it is, bounce it
              
         </script>
     </body>
